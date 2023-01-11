@@ -48,26 +48,30 @@ function operate(num1, num2, operator) {
 };
 
 //dom functions
-function updateDisplay(value) {
-    display.textContent = value;
+function updateDisplay() {
+    if (Math.round(displayValue) != displayValue) {
+        display.textContent = Number(displayValue).toFixed(2);
+    } else {
+        display.textContent = displayValue;
+    }
 };
 
 function onNumber(e) {
     displayValue += e.target.outerText;
-    updateDisplay(displayValue);
+    updateDisplay();
 };
 
-function clear(e){
+function clear(){
     displayValue = '';
     storedValue = null;
     selectedOperator = null;
-    updateDisplay(displayValue);
+    updateDisplay();
 }
 
 function onOperator(e) {
     if (selectedOperator && selectedOperator != "=") {
         displayValue = operate(storedValue, displayValue, selectedOperator);
-        updateDisplay(displayValue);
+        updateDisplay();
     }
     
     if (selectedOperator != "=") {
@@ -76,6 +80,11 @@ function onOperator(e) {
     
     selectedOperator = e.target.outerText;
     displayValue = '';
+
+    if (display.textContent === "Infinity"){
+        clear();
+        display.textContent = "bruh";
+    }
 
     console.log("Stored Value: " + storedValue);
     console.log("Display Value: " + displayValue);
