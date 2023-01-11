@@ -57,15 +57,19 @@ function updateDisplay() {
 };
 
 function onNumber(e) {
-    displayValue += e.target.outerText;
-    updateDisplay();
+    if (e.target.outerText === "0" && displayValue === '') {
+        console.log(displayValue);
+    } else {
+        displayValue += e.target.outerText;
+        updateDisplay();
+    }
 };
 
 function clear(){
     displayValue = '';
     storedValue = null;
     selectedOperator = null;
-    updateDisplay();
+    display.textContent = '0';
 }
 
 function onOperator(e) {
