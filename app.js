@@ -21,19 +21,19 @@ const display = document.getElementById('current');
 //math functions
 function add(num1, num2) {
     return Number(num1) + Number(num2);
-};
+}
 
 function subtract(num1, num2) {
     return Number(num1) - Number(num2);
-};
+}
 
 function multiply(num1, num2) {
     return Number(num1) * Number(num2);
-};
+}
 
 function divide(num1, num2) {
     return Number(num1) / Number(num2);
-};
+}
 
 function operate(num1, num2, operator) {
     if (operator === "+"){
@@ -45,7 +45,7 @@ function operate(num1, num2, operator) {
     } else if (operator === "/") {
         return divide(num1, num2);
     }
-};
+}
 
 //dom functions
 function updateDisplay() {
@@ -54,7 +54,7 @@ function updateDisplay() {
     } else {
         display.textContent = displayValue;
     }
-};
+}
 
 function onNumber(e) {
     if (e.target.outerText === "0" && displayValue === '') {
@@ -63,7 +63,7 @@ function onNumber(e) {
         displayValue += e.target.outerText;
         updateDisplay();
     }
-};
+}
 
 function clear(){
     displayValue = '';
@@ -93,4 +93,4 @@ function onOperator(e) {
     console.log("Stored Value: " + storedValue);
     console.log("Display Value: " + displayValue);
     console.log("Selected Operator: " + selectedOperator);
-};
+}
